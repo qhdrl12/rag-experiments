@@ -9,7 +9,7 @@ def test_main_prints_hello() -> None:
     """Test that main function prints the expected message."""
     with patch("builtins.print") as mock_print:
         main()
-        mock_print.assert_called_once_with("Hello from rag-expriment!")
+        mock_print.assert_called_once_with("Hello from rag-experiments!")
 
 
 def test_main_function_exists() -> None:

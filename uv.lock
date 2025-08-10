@@ -374,7 +374,7 @@ wheels = [
 ]
 
 [[package]]
-name = "rag-expriment"
+name = "rag-experiments"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
