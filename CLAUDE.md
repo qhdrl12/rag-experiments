@@ -39,6 +39,8 @@
 3. **영향 범위 평가**: 변경이 미칠 수 있는 영향 분석
 
 #### Phase 2: 계획 수립 (TodoWrite 필수)
+**🟡중간 이상의 복잡한 작업**은 `templates/IMPLEMENTATION_PLAN.md`를 기반으로 상세한 단계별 계획을 수립해야 합니다:
+
 1. **작업 분해**: 큰 작업을 리뷰 가능한 작은 단위로 분해
 2. **우선순위**: 의존성 고려한 실행 순서 결정
 3. **테스트 계획**: 각 단계별 검증 방법 수립
@@ -77,16 +79,20 @@
 ## 📁 프로젝트 구조
 
 ```
-rag-expriment/
+rag-experiments/
 ├── main.py              # 메인 애플리케이션 진입점
 ├── tests/               # 테스트 디렉토리
 │   ├── __init__.py
 │   └── test_main.py
+├── templates/           # Claude Code 작업 템플릿
+│   ├── IMPLEMENTATION_PLAN.md      # 복잡한 작업용 계획서
+│   └── CODE_REVIEW_CHECKLIST.md   # 체계적 코드 리뷰용
 ├── pyproject.toml       # 프로젝트 설정 및 의존성
 ├── .pre-commit-config.yaml
 ├── .gitignore
 ├── README.md
-└── CLAUDE.md           # 이 파일
+├── Makefile            # 개발 편의 명령어
+└── CLAUDE.md           # 이 파일 (Claude Code 설정)
 ```
 
 ## ⚡ Claude Code 작업 지침
@@ -250,9 +256,9 @@ test: Add comprehensive tests for embedding module
 ### 자동 실행 규칙
 Claude Code가 이 프로젝트에서 작업할 때 자동으로 적용되는 규칙들:
 
-1. **모든 중간 크기 이상의 작업**: TodoWrite 도구로 계획 수립 필수
+1. **모든 중간 크기 이상의 작업**: `templates/IMPLEMENTATION_PLAN.md` 기반 계획 수립 필수
 2. **코드 변경 전**: 반드시 Read 도구로 현재 상태 파악
-3. **구현 후**: `make quality` 명령어로 품질 확인
+3. **구현 후**: `templates/CODE_REVIEW_CHECKLIST.md` 기반 자체 리뷰 + `make quality` 실행
 4. **커밋 전**: pre-commit 훅으로 최종 검증
 
 ### 🚨 3회 시도 제한 규칙 (필수 준수)
@@ -286,7 +292,7 @@ Claude Code가 이 프로젝트에서 작업할 때 자동으로 적용되는 �
 - ❌ **3회 시도 실패** (위의 3회 시도 제한 규칙 적용)
 
 ### 🤖 AI 자체 코드 리뷰 (필수 수행)
-구현 완료 후 반드시 스스로 다음 체크리스트를 점검해야 합니다:
+구현 완료 후 반드시 `templates/CODE_REVIEW_CHECKLIST.md`를 참고하여 체계적인 자체 리뷰를 수행해야 합니다:
 
 #### 📋 Core Review Checklist
 - [ ] **논리적 정확성**: 코드가 의도한 대로 동작하는가?
